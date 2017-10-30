@@ -17,3 +17,19 @@ function a(b,c){
 	}
 };
 时间复杂度为O((N-M)*M)
+
+》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》
+
+在一个字符串(1<=字符串长度<=10000，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置。
+function FirstNotRepeatingChar(str)
+{
+    for(var i=0;i<str.length;i++){
+        if(str.indexOf(str[i],i+1)===-1&&str.indexOf(str[i])===i){
+            return i;
+        }
+    }
+    return -1;	
+}
+
+//str.indexOf(str[i],i+1)===-1 判断元素后是否还有相同元素。如果有返回这个元素后第一次出现相同元素的位置。
+//str.indexOf(str[i])===i 判断元素前是否有相同元素。如果有返回值为字符串第一次出现此元素的位置。
