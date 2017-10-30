@@ -33,3 +33,34 @@ function FirstNotRepeatingChar(str)
 
 //str.indexOf(str[i],i+1)===-1 判断元素后是否还有相同元素。如果有返回这个元素后第一次出现相同元素的位置。
 //str.indexOf(str[i])===i 判断元素前是否有相同元素。如果有返回值为字符串第一次出现此元素的位置。
+
+》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》
+
+数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组
+长度的一半，因此输出2。如果不存在则输出0。
+
+function MoreThanHalfNum_Solution(numbers)
+{
+    // write code here
+    var c=[],
+        len = numbers.length,
+        a;
+    for(var i=0;i<len;i++){
+        a=numbers[i];
+        if(c[a]){
+            c[a]++;
+        }else{
+            c[a]=1;
+        }
+    }
+    for(var j=0;j<c.length;j++){
+        if(c[j]>len/2){
+            return j;
+        }
+    }
+    return 0;
+}
+
+
+
+
