@@ -1,0 +1,29 @@
+1.数组去重：
+（1）hash去重法
+    function unique(arr) {
+     var result = [], hash = {};
+      for (var i = 0, elem; (elem = arr[i]) != null; i++) {
+          if (!hash[elem]) {
+              result.push(elem);
+              hash[elem] = true;
+          }
+      }
+     return result;
+    }
+（2）遍历
+    function myArray_Unique(myArray)
+     {
+     //var myArray=new Array("a","a","c","a","c","d","e","f","f","g","h","g","h","k");
+     var haha=myArray;
+     for(var i=0;i<myArray.length;i++)
+     {
+     for(var j=0;j<myArray.length;j++)
+     {
+     temp=myArray[i];
+     if(temp==myArray[i+j+1]) //如果当前元素与后一个元素相等
+     haha.splice(i+j+1,1); //然后就移除下一个元素
+     }
+     }
+     return haha;
+     }  
+  
