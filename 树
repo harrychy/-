@@ -1,0 +1,61 @@
+一、二叉树遍历
+    递归遍历：
+            var tree = {
+              value: 1,
+              left: {
+                value: 2,
+                left: {
+                  value: 4
+                }
+              },
+              right: {
+                value: 3,
+                left: {
+                  value: 5,
+                  left: {
+                    value: 7
+                  },
+                  right: {
+                    value: 8
+                  }
+                },
+                right: {
+                  value: 6
+                }
+              }
+            } //一个树
+
+            递归遍历
+            觉得用这几个字母表示递归遍历的三种方法不错：
+            D：访问根结点，L：遍历根结点的左子树，R：遍历根结点的右子树。
+            先序遍历：DLR
+            中序遍历：LDR
+            后序遍历：LRD
+            顺着字母表示的意思念下来就是遍历的顺序了 ^ ^
+----------------------------------------------------------------------------------------------------------------------------------------
+            先序遍历的递归算法：
+            var preOrder = function (node) {
+              if (node) {
+                console.log(node.value);
+                preOrder(node.left);
+                preOrder(node.right);
+              }
+            }
+----------------------------------------------------------------------------------------------------------------------------------------
+            中序遍历的递归算法：
+            var inOrder = function (node) {
+              if (node) {
+                inOrder(node.left);
+                console.log(node.value);
+                inOrder(node.right);
+              }
+            }
+----------------------------------------------------------------------------------------------------------------------------------------
+            后序遍历的递归算法：
+            var postOrder = function (node) {
+              if (node) {
+                postOrder(node.left);
+                postOrder(node.right);
+                console.log(node.value);
+              }
+            }
