@@ -88,6 +88,11 @@
  》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》
  
  AVL树 平衡树
+        左子树高度比右子树高度大1以上1.如果左子树的左子树高度大于等于左子树的右子树高度,右旋
+                                  2.否则需要右-左双旋
+                                  
+        右子树高度比左子树高度大1以上1.如果右子树的右子树高度大于等于右子树的左子树高度，左旋
+                                  2.否则需要左-右双旋
         左单旋：左节点不动
         function roateLeft(AvlNode) {
             var node = AvlNode.right; // 保存右子节点
@@ -112,3 +117,44 @@
             AvlNode.left = roateRight(AvlNode.right); // 对右子节点做右单旋
             return roateLeft(AvlNode); // 做左单旋
         }
+ --------------------------------------------------------------------------------------------------------------------------------------
+    获取树高：
+        function getAvlTreeHeight(node) {
+            if (node == null) {
+                // node不存在返回0
+                return 0;
+            } else {
+                var leftHeight = getAvlTreeHeight(node.left);
+                var rightHeight = getAvlTreeHeight(node.right);
+                // 返回左子树、右子树中的最大高度
+                return (leftHeight > rightHeight ? leftHeight : rightHeight) + 1;
+            }
+        }
+    平衡二叉树：
+    function balance(node) {
+        if (node == null) {
+            return node;
+        }
+        // 左子树高度比右子树高度大1以上
+        if (getAvlTreeHeight(node.left) - getAvlTreeHeight(node.right) > 1) {
+            if (getAvlTreeHeight(node.left.left) >= getAvlTreeHeight(node.left.right)) {
+                // 如果左子树的左子树高度大于等于左子树的右子树高度
+                // 直接进行右单旋
+                node = roateRight(node);
+            } else {
+                // 否则需要右-左双旋
+                node = roateRightLeft(node);
+            }
+            // 右子树高度比左子树高度大1以上
+        } else if (getAvlTreeHeight(node.right) - getAvlTreeHeight(node.left) > 1) {
+            if (getAvlTreeHeight(node.right.right) >= getAvlTreeHeight(node.right.left)) {
+                // 如果右子树的右子树高度大于等于右子树的左子树高度
+                // 直接进行左单旋
+                node = roateLeft(node);
+            } else {
+                // 否则需要左-右双旋
+                node = roateLeftRight(node);
+            }
+        }
+        return node;
+    }
