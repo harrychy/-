@@ -88,5 +88,27 @@
  》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》
  
  AVL树 平衡树
-        https://segmentfault.com/a/1190000008619134
-        
+        左单旋：左节点不动
+        function roateLeft(AvlNode) {
+            var node = AvlNode.right; // 保存右子节点
+            AvlNode.right = node.left; // node的左子节点连接到AvlNode成为其右子节点
+            node.left = AvlNode; // AvlNode连接到node成为其左子节点
+            return node; // 返回node，连接到AvlNode最初的父节点
+        }
+        右单旋：右节点不动
+        function roateRight(AvlNode) {
+            var node = AvlNode.left; // 保存左子节点
+            AvlNode.left = node.right; // 将node的右子节点连接到AvlNode成为其左子节点
+            node.right = AvlNode; // AvlNode连接到node，成为其右子节点
+            return node; // 返回node连接到AvlNode最初的父节点
+        }
+        左-右双旋：
+        function roateLeftRight(AvlNode) {
+            AvlNode.right = roateLeft(AvlNode.left); // 对左子节点做左单旋
+            return roateRight(AvlNode); // 做右单旋
+        }
+        右-左双旋：
+        function roateRightLeft(AvlNode) {
+            AvlNode.left = roateRight(AvlNode.right); // 对右子节点做右单旋
+            return roateLeft(AvlNode); // 做左单旋
+        }
