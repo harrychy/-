@@ -1,0 +1,10 @@
+1.求最大公因数：
+            function gcd(a,b){		
+              if (b == 0){ 
+              return a;	 
+              }
+              var r = parseInt(a % b) ;	  
+                return gcd(b, r);	
+            }	
+2.最大公倍数：
+            m*n/gcd(m,n);
