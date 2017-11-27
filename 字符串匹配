@@ -65,6 +65,19 @@ function MoreThanHalfNum_Solution(numbers)
 
 》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》
 
+找出数组中重复的元素，并在新的数组中输出：
+function duplicates(arr) {
+ var result = [];
+    arr.forEach(function(elem){
+       if(arr.indexOf(elem) !=arr.lastIndexOf(elem) && result.indexOf(elem) == -1){//首先确保元素存在重复，并且不让其在新数组中重复
+           result.push(elem);                                                        就需要判断在新数组中是否存在，存在则不push
+       }
+    });
+    return result;
+}
+
+》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》
+
 一个整型数组里除了两个数字之外，其他的数字都出现了两次。请写程序找出这两个只出现一次的数字。
 自己：
 function FindNumsAppearOnce(array)
